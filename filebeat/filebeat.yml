@@ -25,7 +25,7 @@ filebeat.config.modules:
 
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
-  hosts: ["elasticsearch:9200"]
+  hosts: ["elk-dev.mapan.io"]
 
 setup.template.name: "filebeat"
 setup.template.pattern: "filebeat-*"
