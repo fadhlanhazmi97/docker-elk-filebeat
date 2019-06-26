@@ -25,7 +25,8 @@ filebeat.config.modules:
 
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
-  hosts: ["elk-dev.mapan.io:80"]
+  hosts: ["elasticsearch:9200"]
+  index: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
 
 setup.template.name: "interns"
 setup.template.pattern: "interns-*"
