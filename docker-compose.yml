@@ -17,5 +17,3 @@ services:
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
-    links:
-       - elasticsearch
