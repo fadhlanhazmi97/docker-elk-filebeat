@@ -6,7 +6,7 @@ filebeat.inputs:
     stream: "stdout"
     ids:
       - "*"
-  exclude_files: ['\.gz$']
+  exclude_files: ['\.gz$','/usr/share/dockerlogs/data/d10659f09375*']
   ignore_older: 10m
 
 processors:
