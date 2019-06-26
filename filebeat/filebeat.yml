@@ -27,8 +27,8 @@ filebeat.config.modules:
 output.elasticsearch:
   hosts: ["elk-dev.mapan.io"]
 
-setup.template.name: "filebeat"
-setup.template.pattern: "filebeat-*"
+setup.template.name: "interns"
+setup.template.pattern: "interns-*"
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
 logging.level: error
