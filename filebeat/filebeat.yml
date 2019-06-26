@@ -26,9 +26,10 @@ filebeat.config.modules:
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
   hosts: ["elasticsearch:9200"]
+  index: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
 
-setup.template.name: "filebeat"
-setup.template.pattern: "filebeat-*"
+setup.template.name: "interns"
+setup.template.pattern: "interns-*"
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
 logging.level: error
