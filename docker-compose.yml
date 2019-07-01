@@ -9,8 +9,9 @@ services:
       context: dummy-app
       dockerfile: Dockerfile
   filebeat:
-    hostname: filebeat
+    hostname: ${HOSTNAME}
     image: docker-logs-elk/filebeat:1.0.0
+    restart: always
     build:
       context: filebeat
       dockerfile: Dockerfile
@@ -21,6 +22,13 @@ services:
      - "/var/run/docker.sock:/var/run/docker.sock"
     links:
        - elasticsearch
+    environment:
+      HOSTS: "elasticsearch:9200,elastic:9200"
+      LOG_PATH: "/usr/share/dockerlogs/data"
+      INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
+      EXCLUDE_LINES: ".*INFO.*,.*WARN.*"
+      JSON_FIELDS: "log,message"
+
   kibana:
     image: kibana:6.5.2
     environment:
