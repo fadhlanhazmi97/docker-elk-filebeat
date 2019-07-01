@@ -1,10 +1,14 @@
-FROM docker.elastic.co/beats/filebeat:6.5.2
+FROM golang:alpine AS build
+RUN apk update && apk add --no-cache build-base git && \
+    go get -v -d -u github.com/elastic/beats/filebeat && \
+    cd $GOPATH/src/github.com/elastic/beats/filebeat && \
+    echo "build" && \
+    go build -i
 
-# Copy our custom configuration file
-COPY filebeat.yml /usr/share/filebeat/filebeat.yml
-
+FROM alpine:3.6
+WORKDIR /usr/share/filebeat
 USER root
-# Create a directory to map volume with all docker log files
-RUN mkdir /usr/share/filebeat/dockerlogs
-RUN chown -R root /usr/share/filebeat/
-RUN chmod -R go-w /usr/share/filebeat/
+COPY --from=build /go/src/github.com/elastic/beats/filebeat/filebeat /usr/share/filebeat/filebeat
+COPY filebeat.yml /usr/share/filebeat/filebeat.yml
+RUN chown -R root /usr/share/filebeat/ && chmod -R go-w /usr/share/filebeat/
+CMD ["./filebeat","-c", "filebeat.yml"]
