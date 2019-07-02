@@ -7,6 +7,6 @@ build:
 down:
 	docker-compose down
 delete:
-	docker rmi $(docker images | grep docker-logs | tr -s ' ' | cut -d ' ' -f 3)
+	docker rmi fadhlanhazmi/filebeat:1.0.0
 clean: down delete
 restart: clean run
