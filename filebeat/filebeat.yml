@@ -17,6 +17,10 @@ processors:
     target: ""
     # overwrite existing target elasticsearch fields while decoding json fields    
     overwrite_keys: true
+- drop_event:
+    when:
+      equals:
+        docker.container.name: "dockerlogselk_kibana_1"
 - add_docker_metadata:
     host: "unix:///var/run/docker.sock"
 
