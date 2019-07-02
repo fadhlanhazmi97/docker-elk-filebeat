@@ -19,8 +19,8 @@ processors:
     overwrite_keys: true
 - drop_event:
     when:
-      equals:
-        docker.container.name: "dd-agent"
+      contains:
+        docker.container.image: "datadog"
 - add_docker_metadata:
     host: "unix:///var/run/docker.sock"
 
