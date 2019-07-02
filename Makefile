@@ -8,5 +8,5 @@ down:
 	docker-compose down
 delete:
 	docker rmi $(docker images | grep docker-logs | tr -s ' ' | cut -d ' ' -f 3)
-clean: stop delete
+clean: down delete
 restart: clean run
