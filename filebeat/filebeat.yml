@@ -3,7 +3,7 @@ filebeat.inputs:
   combine_partial: true
   containers:
     path: ${LOG_PATH}
-    stream: "stdout"
+    stream: ${STREAM}
     ids:
       - "*"
   exclude_files: ${EXCLUDE_FILES:".^"}
@@ -17,10 +17,6 @@ processors:
     target: ""
     # overwrite existing target elasticsearch fields while decoding json fields    
     overwrite_keys: true
-- drop_event:
-    when:
-      equals:
-        docker.container.name: "dockerlogselk_kibana_1"
 - add_docker_metadata:
     host: "unix:///var/run/docker.sock"
 
@@ -35,3 +31,6 @@ output.elasticsearch:
 
 setup.template.name: "interns"
 setup.template.pattern: "interns-*"
+
+logging.level: ${LOGGING_LEVEL}
+logging.json: true

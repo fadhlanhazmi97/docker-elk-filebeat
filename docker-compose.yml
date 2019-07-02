@@ -35,6 +35,8 @@ services:
       INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       EXCLUDE_LINES: ".*INFO.*,.*WARN.*"
       JSON_FIELDS: "log,message"
+      LOGGING_LEVEL: "warning"
+      STREAM: "all"
 
   kibana:
     image: kibana:6.5.2
