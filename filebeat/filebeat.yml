@@ -35,3 +35,5 @@ output.elasticsearch:
 
 setup.template.name: "interns"
 setup.template.pattern: "interns-*"
+
+logging.level: ${LOGGING_LEVEL}

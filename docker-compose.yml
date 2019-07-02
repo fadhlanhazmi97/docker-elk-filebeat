@@ -33,6 +33,7 @@ services:
       LOG_PATH: "/usr/share/dockerlogs/data"
       INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       JSON_FIELDS: "log,message"
+      LOGGING_LEVEL: "warning"
 
 networks:
   elk:
