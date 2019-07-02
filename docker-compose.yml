@@ -8,6 +8,7 @@ services:
     build:
       context: dummy-app
       dockerfile: Dockerfile
+
   filebeat:
     hostname: ${HOSTNAME}
     image: docker-logs-elk/filebeat:1.0.0
@@ -15,6 +16,8 @@ services:
     build:
       context: filebeat
       dockerfile: Dockerfile
+      args:
+        - version=6.5
     volumes:
       # needed to access all docker logs (read only) :
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
@@ -25,7 +28,7 @@ services:
     environment:
       HOSTS: "elasticsearch:9200"
       LOG_PATH: "/usr/share/dockerlogs/data"
-      INDEX: "interns-%{[agent.version]}-%{+yyyy.MM.dd}"
+      INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       EXCLUDE_LINES: ".*INFO.*,.*WARN.*"
       JSON_FIELDS: "log,message"
 
