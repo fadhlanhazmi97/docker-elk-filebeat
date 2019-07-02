@@ -31,6 +31,3 @@ output.elasticsearch:
 
 setup.template.name: "interns"
 setup.template.pattern: "interns-*"
-
-# Write Filebeat own logs only to file to avoid catching them with itself in docker log files
-logging.level: warning

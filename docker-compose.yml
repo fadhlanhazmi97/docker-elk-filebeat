@@ -23,9 +23,9 @@ services:
     links:
        - elasticsearch
     environment:
-      HOSTS: "elasticsearch:9200,elastic:9200"
+      HOSTS: "elasticsearch:9200"
       LOG_PATH: "/usr/share/dockerlogs/data"
-      INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
+      INDEX: "interns-%{[agent.version]}-%{+yyyy.MM.dd}"
       EXCLUDE_LINES: ".*INFO.*,.*WARN.*"
       JSON_FIELDS: "log,message"
 
