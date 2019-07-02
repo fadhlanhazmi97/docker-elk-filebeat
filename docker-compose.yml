@@ -24,6 +24,7 @@ services:
     environment:
       HOSTS: "elk-dev.mapan.io:80"
       LOG_PATH: "/usr/share/dockerlogs/data"
+      EXCLUDE_LINES: ".*PROCESS.*,.*CORE.*"
       INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       JSON_FIELDS: "log,message"
       LOGGING_LEVEL: "warning"
