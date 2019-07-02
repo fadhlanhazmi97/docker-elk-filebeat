@@ -6,7 +6,7 @@ build:
 	docker-compose -f docker-compose-build.yml build
 down:
 	docker-compose down
-delete:
+rm:
 	docker rmi fadhlanhazmi/filebeat:1.0.0
-clean: down delete
+clean: down rm
 restart: clean run

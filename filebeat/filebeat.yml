@@ -3,7 +3,7 @@ filebeat.inputs:
   combine_partial: true
   containers:
     path: ${LOG_PATH}
-    stream: "stdout"
+    stream: ${STREAM}
     ids:
       - "*"
   exclude_files: ${EXCLUDE_FILES:".^"}
@@ -34,4 +34,3 @@ setup.template.pattern: "interns-*"
 
 logging.level: ${LOGGING_LEVEL}
 logging.json: true
-logging.to_stderr: false
