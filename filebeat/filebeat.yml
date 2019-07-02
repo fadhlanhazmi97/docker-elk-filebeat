@@ -20,7 +20,7 @@ processors:
 - drop_event:
     when:
       equals:
-        docker.container.name: "dd_agent"
+        docker.container.name: "dd-agent"
 - add_docker_metadata:
     host: "unix:///var/run/docker.sock"
 
