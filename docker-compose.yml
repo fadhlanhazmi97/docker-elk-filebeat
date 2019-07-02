@@ -27,7 +27,7 @@ services:
       EXCLUDE_LINES: ".*PROCESS.*,.*CORE.*"
       INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       JSON_FIELDS: "log,message"
-      LOGGING_LEVEL: "info"
+      LOGGING_LEVEL: "warning"
       STREAM: "all"
 
 networks:
