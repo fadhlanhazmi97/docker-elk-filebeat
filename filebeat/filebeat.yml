@@ -3,7 +3,7 @@ filebeat.inputs:
   combine_partial: true
   containers:
     path: ${LOG_PATH}
-    stream: "stdout"
+    stream: ${STREAM}
     ids:
       - "*"
   exclude_files: ${EXCLUDE_FILES:".^"}
