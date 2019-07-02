@@ -14,6 +14,11 @@ services:
     hostname: ${HOSTNAME}
     image: fadhlanhazmi/filebeat:1.0.0
     restart: always
+    build:
+      context: filebeat
+      dockerfile: Dockerfile
+      args:
+        - version=6.5
     volumes:
       # needed to access all docker logs (read only) :
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
