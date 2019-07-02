@@ -5,17 +5,34 @@ services:
     image: docker-logs-elk/dummy-app:1.0.0
     ports:
       - 80:80
+    networks:
+      - elk
     build:
       context: dummy-app
       dockerfile: Dockerfile
   filebeat:
-    hostname: filebeat
+    hostname: ${HOSTNAME}
     image: docker-logs-elk/filebeat:1.0.0
+    restart: always
     build:
       context: filebeat
       dockerfile: Dockerfile
+      args:
+        - version=6.5
     volumes:
       # needed to access all docker logs (read only) :
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+    environment:
+      HOSTS: "elk-dev.mapan.io:80"
+      LOG_PATH: "/usr/share/dockerlogs/data"
+      INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
+      JSON_FIELDS: "log,message"
+
+networks:
+  elk:
