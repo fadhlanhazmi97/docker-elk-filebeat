@@ -7,6 +7,6 @@ build:
 stop:
 	docker-compose down
 delete:
-	docker rmi $(docker images | grep docker-logs | tr -s ' ' | cut -d ' ' -f 3)
+	docker rmi $(docker images | grep docker-elk | tr -s ' ' | cut -d ' ' -f 3)
 clean: stop delete
 restart: clean run
