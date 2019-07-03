@@ -1,6 +1,6 @@
 default: run
+run: export HOSTNAME=$(shell hostname)
 run:
-	export HOSTNAME=$(shell hostname)
 	docker-compose up -d
 build:
 	docker-compose -f docker-compose-build.yml build
