@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  kibana:
+    image: fadhlanhazmi/kibana:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - LOGGING_QUIET=true
+      - hosts=["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
+    network_mode: host

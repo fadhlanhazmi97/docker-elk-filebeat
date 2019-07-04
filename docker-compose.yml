@@ -2,16 +2,14 @@ version: '3'
 
 services:
   app:
-    image: docker-logs-elk/dummy-app:1.0.0
-    ports:
-      - 80:80
+    image: fadhlanhazmi/dummy-app:1.0.0
     network_mode: host
     build:
       context: dummy-app
       dockerfile: Dockerfile
 
   filebeat:
-    image: docker-logs-elk/filebeat:1.0.0
+    image: fadhlanhazmi/filebeat:1.0.0
     restart: always
     network_mode: host
     build:
@@ -34,19 +32,18 @@ services:
       STREAM: "all"
 
   kibana:
-    image: docker-logs-elk/kibana:1.0.0
+    image: fadhlanhazmi/kibana:1.0.0
     build:
       context: kibana
       dockerfile: Dockerfile
     environment:
-      - "LOGGING_QUIET=true"
+      - LOGGING_QUIET=true
+      - hosts=["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
     network_mode: host
-    ports:
-      - 5601:5601
 
   elasticsearch1:
     hostname: elasticsearch1
-    image: docker-logs-elk/elasticsearch:1.0.0
+    image: fadhlanhazmi/elasticsearch:1.0.0
     build:
       context: elasticsearch
       dockerfile: Dockerfile
@@ -64,7 +61,7 @@ services:
         hard: -1
   elasticsearch2:
     hostname: elasticsearch2
-    image: docker-logs-elk/elasticsearch:1.0.0
+    image: fadhlanhazmi/elasticsearch:1.0.0
     build:
       context: elasticsearch
       dockerfile: Dockerfile
@@ -82,7 +79,7 @@ services:
         hard: -1
   elasticsearch3:
     hostname: elasticsearch3
-    image: docker-logs-elk/elasticsearch:1.0.0
+    image: fadhlanhazmi/elasticsearch:1.0.0
     build:
       context: elasticsearch
       dockerfile: Dockerfile
@@ -98,5 +95,3 @@ services:
       memlock:
         soft: -1
         hard: -1
-    ports:
-      - 9202:9200
