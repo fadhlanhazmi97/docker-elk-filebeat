@@ -24,10 +24,8 @@ services:
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
-    depends_on:
-      - elasticsearch
     environment:
-      HOSTS: "localhost:9200"
+      HOSTS: "localhost:9200,localhost:9201,localhost:9202"
       LOG_PATH: "/usr/share/dockerlogs/data"
       INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       EXCLUDE_LINES: ".*INFO.*,.*WARN.*"
@@ -42,14 +40,12 @@ services:
       dockerfile: Dockerfile
     environment:
       - "LOGGING_QUIET=true"
-    depends_on:
-      - elasticsearch
     network_mode: host
     ports:
       - 5601:5601
 
-  elasticsearch:
-    hostname: elasticsearch
+  elasticsearch1:
+    hostname: elasticsearch1
     image: docker-logs-elk/elasticsearch:1.0.0
     build:
       context: elasticsearch
@@ -58,10 +54,49 @@ services:
       - cluster.name=docker-logs-elk-cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+      - master=true
+      - data=true
+      - port=9200
+    network_mode: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+  elasticsearch2:
+    hostname: elasticsearch2
+    image: docker-logs-elk/elasticsearch:1.0.0
+    build:
+      context: elasticsearch
+      dockerfile: Dockerfile
+    environment:
+      - cluster.name=docker-logs-elk-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+      - master=true
+      - data=true
+      - port=9201
+    network_mode: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+  elasticsearch3:
+    hostname: elasticsearch3
+    image: docker-logs-elk/elasticsearch:1.0.0
+    build:
+      context: elasticsearch
+      dockerfile: Dockerfile
+    environment:
+      - cluster.name=docker-logs-elk-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+      - master=true
+      - data=true
+      - port=9202
     network_mode: host
     ulimits:
       memlock:
         soft: -1
         hard: -1
     ports:
-      - 9200:9200
+      - 9202:9200
