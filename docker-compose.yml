@@ -51,8 +51,6 @@ services:
       - cluster.name=docker-logs-elk-cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-      - master=true
-      - data=true
       - port=9200
     network_mode: host
     ulimits:
@@ -69,8 +67,6 @@ services:
       - cluster.name=docker-logs-elk-cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-      - master=true
-      - data=true
       - port=9201
     network_mode: host
     ulimits:
@@ -87,8 +83,6 @@ services:
       - cluster.name=docker-logs-elk-cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-      - master=true
-      - data=true
       - port=9202
     network_mode: host
     ulimits:

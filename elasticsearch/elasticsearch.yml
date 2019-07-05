@@ -1,5 +1,11 @@
 cluster.name: ${cluster.name}
 node.name: ${HOSTNAME}
-node.master: ${master}
-node.data: ${data}
 http.port: ${port}
+discovery.seed_hosts:
+  - 
+  - 
+  - 
+cluster.initial_master_nodes: 
+  - es-0
+  - es-1
+  - es-2
