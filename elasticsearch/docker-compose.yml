@@ -4,9 +4,6 @@ services:
   elasticsearch:
     hostname: elasticsearch
     image: fadhlanhazmi/elasticsearch:1.0.0
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment:
       - cluster.name=docker-logs-elk-cluster
       - bootstrap.memory_lock=true

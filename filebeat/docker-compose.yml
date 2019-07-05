@@ -4,19 +4,11 @@ services:
   app:
     image: fadhlanhazmi/dummy-app:1.0.0
     network_mode: host
-    build:
-      context: ../dummy-app
-      dockerfile: Dockerfile
 
   filebeat:
     image: fadhlanhazmi/filebeat:1.0.0
     restart: always
     network_mode: host
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - version=7.1
     volumes:
       # needed to access all docker logs (read only) :
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
