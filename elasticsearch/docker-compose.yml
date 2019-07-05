@@ -3,6 +3,8 @@ version: '3'
 services:
   elasticsearch:
     hostname: elasticsearch
+    build:
+      context: .
     image: fadhlanhazmi/elasticsearch:1.0.0
     environment:
       - cluster.name=docker-logs-elk-cluster
