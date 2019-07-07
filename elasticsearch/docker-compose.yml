@@ -3,14 +3,13 @@ version: '3'
 services:
   elasticsearch:
     hostname: elasticsearch
-    build:
-      context: .
     image: fadhlanhazmi/elasticsearch:1.0.0
     environment:
       - cluster.name=docker-logs-elk-cluster
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
+      - node.name=node-
     network_mode: host
     ulimits:
       memlock:
