@@ -9,6 +9,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
+      - HOSTNAME=${HOSTNAME}
     network_mode: host
     ulimits:
       memlock:
