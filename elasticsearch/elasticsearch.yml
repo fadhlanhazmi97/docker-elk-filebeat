@@ -1,5 +1,5 @@
 cluster.name: ${cluster.name}
 node.name: ${HOSTNAME}
 network.host: 0.0.0.0
-cluster.initial_master_nodes: ["es-1", "es-2","es-3"]
-discovery.seed_hosts: ${hosts}
+cluster.initial_master_nodes: ${nodes}
+discovery.seed_hosts: ["10.128.0.101","10.128.0.102","10.128.0.103"]
