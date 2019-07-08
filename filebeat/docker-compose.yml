@@ -15,7 +15,7 @@ services:
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      HOSTS=["10.128.0.101","10.128.0.102","10.128.0.103"]
+      HOSTS="10.128.0.101,10.128.0.102,10.128.0.103"
       LOG_PATH="/usr/share/dockerlogs/data"
       INDEX="interns-%{[beat.version]}-%{+yyyy.MM.dd}"
       EXCLUDE_LINES=".*INFO.*,.*WARN.*"
