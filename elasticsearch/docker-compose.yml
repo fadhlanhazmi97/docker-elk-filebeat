@@ -10,7 +10,6 @@ services:
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
       - HOSTNAME=${HOSTNAME}
-      - nodes=["es-1", "es-2","es-3"]
     network_mode: host
     ulimits:
       memlock:
