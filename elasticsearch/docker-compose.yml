@@ -10,6 +10,7 @@ services:
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
       - HOSTNAME=${HOSTNAME}
+      - seed.hosts=["10.128.0.101","10.128.0.102","10.128.0.103"]
     network_mode: host
     ulimits:
       memlock:
