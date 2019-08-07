@@ -22,14 +22,7 @@ services:
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
-    environment:
-      HOSTS: "localhost:9200,localhost:9201,localhost:9202"
-      LOG_PATH: "/usr/share/dockerlogs/data"
-      INDEX: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
-      EXCLUDE_LINES: ".*INFO.*,.*WARN.*"
-      JSON_FIELDS: "log,message"
-      LOGGING_LEVEL: "warning"
-      STREAM: "all"
+     - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
 
   kibana:
     image: fadhlanhazmi/kibana:1.0.0
