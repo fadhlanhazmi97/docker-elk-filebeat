@@ -16,6 +16,4 @@ FROM alpine:3.6
 WORKDIR /usr/share/filebeat
 USER root
 COPY --from=build /go/src/github.com/elastic/beats/filebeat/compiled /usr/share/filebeat/
-COPY filebeat.yml /usr/share/filebeat/filebeat.yml
-RUN chmod go-w filebeat.yml
-CMD ["./filebeat","-e","-c", "filebeat.yml"]
+CMD ["./filebeat","-strict.perms=false","-e","-c", "filebeat.yml"]
