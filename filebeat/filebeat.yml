@@ -6,7 +6,7 @@ filebeat.inputs:
     stream: "all"
     ids:
       - "*"
-  exclude_files: ".*INFO.*,.*WARN.*"
+  exclude_lines: ".*INFO.*,.*WARN.*"
   ignore_older: 10m
 
 processors:

@@ -7,8 +7,6 @@ services:
 
   filebeat:
     image: fadhlanhazmi/filebeat:1.0.0
-    build:
-      context: .
     restart: always
     network_mode: host
     volumes:
