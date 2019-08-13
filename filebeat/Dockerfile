@@ -1,5 +1,5 @@
 FROM golang:alpine AS build
-ARG version
+ARG version=7.3
 RUN apk update && apk add --no-cache build-base git && \
     export PATH="$GOPATH/bin:$PATH" && \
     go get -v -d -u github.com/elastic/beats/filebeat && \
