@@ -5,5 +5,6 @@ services:
     image: fadhlanhazmi/kibana:1.0.0
     environment:
       - LOGGING_QUIET=true
-      - hosts=["http://10.128.0.101:9200","http://10.128.0.102:9200","http://10.128.0.103:9200"]
+    volumes:
+      - "./kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
     network_mode: host

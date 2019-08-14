@@ -15,14 +15,12 @@ services:
     build:
       context: filebeat
       dockerfile: Dockerfile
-      args:
-        - version=7.1
     volumes:
       # needed to access all docker logs (read only) :
      - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
-     - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
+     - "./local-config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
 
   kibana:
     image: fadhlanhazmi/kibana:1.0.0
@@ -31,7 +29,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - LOGGING_QUIET=true
-      - hosts=["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
+    volumes:
+      - - "./local-config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
     network_mode: host
 
   elasticsearch1:
@@ -42,9 +41,12 @@ services:
       dockerfile: Dockerfile
     environment:
       - cluster.name=docker-logs-elk-cluster
+      - node.name=es-1
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
+    volumes:
+      - "./local-config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
     network_mode: host
     ulimits:
       memlock:
@@ -58,9 +60,12 @@ services:
       dockerfile: Dockerfile
     environment:
       - cluster.name=docker-logs-elk-cluster
+      - node.name=es-2
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9201
+    volumes:
+      - "./local-config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
     network_mode: host
     ulimits:
       memlock:
@@ -74,9 +79,12 @@ services:
       dockerfile: Dockerfile
     environment:
       - cluster.name=docker-logs-elk-cluster
+      - node.name=es-3
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9202
+    volumes:
+      - "./local-config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
     network_mode: host
     ulimits:
       memlock:

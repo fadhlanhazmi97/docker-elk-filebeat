@@ -10,6 +10,8 @@ services:
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
       - HOSTNAME=${HOSTNAME}
+    volumes:
+      - "./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
     network_mode: host
     ulimits:
       memlock:
