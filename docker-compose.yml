@@ -30,7 +30,7 @@ services:
     environment:
       - LOGGING_QUIET=true
     volumes:
-      - - "./local-config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
+      - "./local-config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
     network_mode: host
 
   elasticsearch1:
