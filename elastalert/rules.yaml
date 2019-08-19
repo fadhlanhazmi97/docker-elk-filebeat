@@ -1,8 +1,10 @@
 index: filebeat-*
 type: blacklist
-compare_key: host.name
+compare_key: container.image.name
 blacklist:
-- laptop-gua
+- fadhlanhazmi/dummy-app:1.0.0
+realert:
+  minutes: 0
 alert:
 - slack
 slack_webhook_url: https://hooks.slack.com/services/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
