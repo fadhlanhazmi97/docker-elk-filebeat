@@ -16,10 +16,11 @@ services:
       dockerfile: Dockerfile
     volumes:
       # needed to access all docker logs (read only) :
-     - "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
+     #- "/var/lib/docker/containers:/usr/share/dockerlogs/data:ro"
       # needed to access additional informations about containers
-     - "/var/run/docker.sock:/var/run/docker.sock"
+     #- "/var/run/docker.sock:/var/run/docker.sock"
      - "./local-config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
+     - "./log-generator/uwsgi.log:/usr/share/log/uwsgi.log:ro"
 
   kibana:
     image: fadhlanhazmi/kibana:1.0.0

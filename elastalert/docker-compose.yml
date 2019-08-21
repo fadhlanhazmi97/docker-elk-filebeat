@@ -7,3 +7,4 @@ services:
     volumes:
       - "./config.yaml:/opt/elastalert/config.yaml:ro"
       - "./rules.yaml:/opt/elastalert/rules/rules.yaml:ro"
+      - "./modules:/opt/elastalert/modules:ro"

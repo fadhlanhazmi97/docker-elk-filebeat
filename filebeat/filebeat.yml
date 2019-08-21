@@ -12,7 +12,7 @@ filebeat.inputs:
 processors:
   # decode the log field (sub JSON document) if JSON encoded, then maps it's fields to elasticsearch fields
 - decode_json_fields:
-    fields: "log,message"
+    fields: ["log","message"]
     target: ""
     # overwrite existing target elasticsearch fields while decoding json fields    
     overwrite_keys: true
