@@ -10,7 +10,6 @@ services:
 
   filebeat:
     image: fadhlanhazmi/filebeat:1.0.0
-    restart: always
     network_mode: host
     build:
       context: filebeat
@@ -52,6 +51,7 @@ services:
       memlock:
         soft: -1
         hard: -1
+
   elasticsearch2:
     hostname: elasticsearch2
     image: fadhlanhazmi/elasticsearch:1.0.0
@@ -71,6 +71,7 @@ services:
       memlock:
         soft: -1
         hard: -1
+
   elasticsearch3:
     hostname: elasticsearch3
     image: fadhlanhazmi/elasticsearch:1.0.0

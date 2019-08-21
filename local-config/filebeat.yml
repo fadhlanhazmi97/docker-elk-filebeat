@@ -12,7 +12,7 @@ filebeat.inputs:
 processors:
   # decode the log field (sub JSON document) if JSON encoded, then maps it's fields to elasticsearch fields
 - decode_json_fields:
-    fields: "log,message"
+    fields: ["log","message"]
     target: ""
     # overwrite existing target elasticsearch fields while decoding json fields    
     overwrite_keys: true
@@ -26,10 +26,10 @@ filebeat.config.modules:
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
   hosts: ["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
-  index: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
+  index: "arisan-viewmidware"
 
-setup.template.name: "interns"
-setup.template.pattern: "interns-*"
+setup.template.name: "arisan-viewmidware"
+setup.template.pattern: "arisan-viewmidware-*"
 
 logging.level: "warning"
 logging.json: true

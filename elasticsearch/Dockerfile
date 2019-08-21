@@ -1,2 +1,2 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.3.2
 CMD ["elasticsearch", "-Elogger.level=INFO"]

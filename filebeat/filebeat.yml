@@ -25,11 +25,11 @@ filebeat.config.modules:
 
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
-  hosts: ["http://10.128.0.101:9200","http://10.128.0.102:9200","http://10.128.0.103:9200"]
-  index: "interns-%{[beat.version]}-%{+yyyy.MM.dd}"
+  hosts: ["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
+  index: "arisan-viewmidware"
 
-setup.template.name: "interns"
-setup.template.pattern: "interns-*"
+setup.template.name: "arisan-viewmidware"
+setup.template.pattern: "arisan-viewmidware-*"
 
 logging.level: "warning"
 logging.json: true

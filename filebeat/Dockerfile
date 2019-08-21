@@ -1,12 +1,12 @@
 FROM golang:alpine AS build
-ARG version=7.3
+ARG version=6.4
 RUN apk update && apk add --no-cache build-base git && \
     export PATH="$GOPATH/bin:$PATH" && \
     go get -v -d -u github.com/elastic/beats/filebeat && \
     cd $GOPATH/src/github.com/elastic/beats/filebeat && \
     git checkout $version && \
     echo "build" && \
-    go get github.com/magefile/mage && \
+    go get -v github.com/magefile/mage && \
     mage build && ./filebeat version && \
     mkdir compiled && \
     mv filebeat compiled/filebeat && \

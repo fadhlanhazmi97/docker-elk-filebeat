@@ -1,4 +1,3 @@
 cluster.name: ${cluster.name}
 node.name: ${node.name}
 network.host: 0.0.0.0
-cluster.initial_master_nodes: ["es-1", "es-2","es-3"]

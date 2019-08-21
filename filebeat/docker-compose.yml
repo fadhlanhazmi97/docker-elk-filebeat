@@ -7,7 +7,6 @@ services:
 
   filebeat:
     image: fadhlanhazmi/filebeat:1.0.0
-    restart: always
     network_mode: host
     volumes:
       # needed to access all docker logs (read only) :
