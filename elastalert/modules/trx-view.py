@@ -16,7 +16,7 @@ class TrxViewRule(RuleType):
             r".*\/agent.*": "GK"
         }
 
-		path = re.findall(r"GET\s\/.*=|POST\s\/.*=",message)[0]
+		path = re.findall(r"GET.*=|POST.*=",message)[0]
 		document['path'] = path.split(" ")[1]
 		
 		for pattern in self.paths:
