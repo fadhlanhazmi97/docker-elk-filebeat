@@ -6,5 +6,6 @@ services:
     network_mode: host
     volumes:
       - "./config.yaml:/opt/elastalert/config.yaml:ro"
-      - "./rules.yaml:/opt/elastalert/rules/rules.yaml:ro"
+      #- "./unstructured.yaml:/opt/elastalert/rules/unstructured.yaml:ro"
+      - "./trx-view.yaml:/opt/elastalert/rules/trx-view.yaml:ro"
       - "./modules:/opt/elastalert/modules:ro"

@@ -1,0 +1,28 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /home/ruma/log/uwsgi/uwsgi.log
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+# setup filebeat to send output to elasticsearch
+output.elasticsearch:
+  hosts: ["elk-dev.mapan.io:80"]
+  index: "arisan-viewmidware-%{+yyyy.MM.dd}"
+
+setup.template.name: "arisan-viewmidware"
+setup.template.pattern: "arisan-viewmidware-*"
+
+logging.level: debug
+logging.json: true
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+
+  name: filebeat.log
+
+  rotateeverybytes: 5242880
+
+  keepfiles: 7
