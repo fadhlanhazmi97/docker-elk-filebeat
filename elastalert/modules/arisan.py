@@ -1,11 +1,11 @@
 from elastalert.ruletypes import RuleType
 import re
 
-class TrxViewRule(RuleType):
+class ArisanRule(RuleType):
 	def match_regex(self, pattern, message):
 		return bool(re.search(pattern, message))
 		
-	def get_path(self, message, document):
+	def get_source(self, message, document):
 		self.paths = {
             r".*\/products.*": "ce-products",
             r".*\/arisan.*": "ce-arisan",
@@ -16,6 +16,10 @@ class TrxViewRule(RuleType):
             r".*\/agent.*": "GK"
         }
 
+		pattern = r"GET.*=|POST.*="
+		if "web" in document['_index']:
+			pattern = r"GET.*HTTP|POST.*HTTP"
+			
 		path = re.findall(r"GET.*=|POST.*=",message)[0]
 		document['path'] = path.split(" ")[1]
 		
@@ -23,7 +27,7 @@ class TrxViewRule(RuleType):
 			if self.match_regex(pattern, message):
 				return self.paths[pattern]
 		
-		# if pattern doesn't exists return path
+		# if source pattern doesn't exists return path
 		return path
             
 	def add_data(self, data):
@@ -32,7 +36,7 @@ class TrxViewRule(RuleType):
 			error_pattern = r"HTTP[\/1-9\.\"]+\s50."
 
 			if self.match_regex(error_pattern, message):
-				document['target'] = self.get_path(message,document)
+				document['target'] = self.get_source(message,document)
 				document['error_code'] = re.findall(error_pattern,message)[0]
 				self.add_match(document)
 
