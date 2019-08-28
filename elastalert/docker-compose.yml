@@ -2,10 +2,10 @@ version: '3'
 
 services:
   elastalert:
-    image: fadhlanhazmi/elastalert:latest
+    image: fadhlanhazmi/elastalert:0.2.1
     network_mode: host
     volumes:
       - "./config.yaml:/opt/elastalert/config.yaml:ro"
-      #- "./arisan.yaml:/opt/elastalert/rules/arisan.yaml:ro"
+      - "./arisan.yaml:/opt/elastalert/rules/arisan.yaml:ro"
       - "./ce-arisan.yaml:/opt/elastalert/rules/ce-arisan.yaml:ro"
       - "./modules:/opt/elastalert/modules:ro"

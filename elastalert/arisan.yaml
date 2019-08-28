@@ -1,7 +1,8 @@
-index: arisan-web*
+index: arisan-*
 type: modules.arisan.ArisanRule
 alert_subject: Error Detected!
 alert_text_type: exclude_fields
+alert_text: ""
 alert:
 - slack
 slack_webhook_url: https://hooks.slack.com/services/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

@@ -29,7 +29,7 @@ class CEArisanRule(RuleType):
 		for document in data:
 			try:
 				status = document['status']
-				error_pattern = r"40*|50*|200"
+				error_pattern = r"40*|50*"
 
 				if self.match_regex(error_pattern, status):
 					document['target'] = self.get_source(document)
