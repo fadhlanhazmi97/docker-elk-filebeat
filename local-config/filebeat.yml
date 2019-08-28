@@ -10,10 +10,10 @@ filebeat.config.modules:
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
   hosts: ["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
-  index: "arisan-viewmidware"
+  index: "arisan-web"
 
-setup.template.name: "arisan-viewmidware"
-setup.template.pattern: "arisan-viewmidware-*"
+setup.template.name: "arisan-web"
+setup.template.pattern: "arisan-web-*"
 
 logging.level: "warning"
 logging.json: true

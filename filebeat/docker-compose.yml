@@ -1,10 +1,6 @@
 version: '3'
 
 services:
-  app:
-    image: fadhlanhazmi/dummy-app:1.0.0
-    network_mode: host
-
   filebeat:
     image: fadhlanhazmi/filebeat:1.0.0
     network_mode: host
@@ -14,3 +10,4 @@ services:
       # needed to access additional informations about containers
      - "/var/run/docker.sock:/var/run/docker.sock"
      - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
+     - "../nginx.log:/usr/share/filebeat/nginx.log"

@@ -5,9 +5,7 @@ filebeat.inputs:
     path: "/usr/share/dockerlogs/data"
     stream: "all"
     ids:
-      - "*"
-  exclude_lines: ".*INFO.*,.*WARN.*"
-  ignore_older: 10m
+      - "4baa1ee39f1d"
 
 processors:
   # decode the log field (sub JSON document) if JSON encoded, then maps it's fields to elasticsearch fields
@@ -25,11 +23,10 @@ filebeat.config.modules:
 
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
-  hosts: ["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
-  index: "arisan-viewmidware"
+  hosts: ["http://elk-dev.mapan.io:80"]
+  index: "arisan-web-{+yyyy.MM.dd}"
 
-setup.template.name: "arisan-viewmidware"
-setup.template.pattern: "arisan-viewmidware-*"
+setup.template.name: "arisan-web"
+setup.template.pattern: "arisan-web-*"
 
-logging.level: "warning"
-logging.json: true
+logging.level: warning
