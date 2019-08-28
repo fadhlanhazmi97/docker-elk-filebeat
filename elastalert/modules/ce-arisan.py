@@ -39,8 +39,14 @@ class CEArisanRule(RuleType):
 				print("Log format unsupported")
 
 	def get_match_str(self, match):
-		match_str = "The source of the error is at: "+ match['target']+"\n"
-		match_str += "API Path: "+ match['url_path']+"\n"
-		match_str += "Error detected in: "+match['app']+"\n"
-		match_str += "Error HTTP code: "+match['error_code'][-3:]
-		return match_str
+		try:
+			match_str = "The source of the error is at: "+ match['target']+"\n"
+			match_str += "API Path: "+ match['url_path']+"\n"
+			match_str += "Error detected in: "+match['app']+"\n"
+			match_str += "Error HTTP code: "+match['error_code'][-3:]
+			return match_str
+		except:
+			error_str = "Log format unsupported\n\n"
+			error_str += "Here is the log:\n"
+			error_str += str(match)
+			return error_str
