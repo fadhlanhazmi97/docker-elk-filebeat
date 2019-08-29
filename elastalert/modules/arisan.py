@@ -44,6 +44,7 @@ class ArisanRule(RuleType):
 		for document in data:
 			try:
 				message = document['message']
+				print("Message: "+message)
 				error_pattern = r"HTTP[\/1-9\.\"]+\s20."
 
 				if self.match_regex(error_pattern, message):
