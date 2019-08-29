@@ -44,7 +44,7 @@ class ArisanRule(RuleType):
 		for document in data:
 			try:
 				message = document['message']
-				error_pattern = r"HTTP[\/1-9\.\"]+\s50."
+				error_pattern = r"HTTP[\/1-9\.\"]+\s20."
 
 				if self.match_regex(error_pattern, message):
 					document['target'] = self.get_source(message,document)
