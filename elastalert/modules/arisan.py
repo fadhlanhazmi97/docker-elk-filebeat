@@ -4,18 +4,26 @@ import re
 class ArisanRule(RuleType):
 	def match_regex(self, pattern, message):
 		return bool(re.search(pattern, message))
+	
+	def process_line(self, line):
+		line_split = line.split(":")
+		key = line_split[0]
+		key = key.replace("/",r"\/")
+		key = ".*"+key+".*"
+		value = line_split[1]
+		value = value.strip()
+		return key, value
+
+	def load_paths(self, name):
+		f = open("modules/pattern/name","r")
+		lines = f.readlines()
+		paths = {}
+		for line in lines:
+			key, value = self.process_line(line)
+			paths[key] = value
+		return paths
 		
 	def get_source(self, message, document):
-		self.paths = {
-            r".*\/products.*": "ce-products",
-            r".*\/arisan.*": "ce-arisan",
-            r".*\/agent\/platform.*": "mps",
-            r".*\/location.*": "location",
-            r".*\/logistic.*": "logistic",
-            r".*\/order.*": "ce-ordering",
-            r".*\/agent.*": "GK"
-        }
-
 		pattern = r"GET.*=|POST.*="
 		if "web" in document['_index']:
 			pattern = r"GET.*HTTP|POST.*HTTP"
@@ -23,9 +31,11 @@ class ArisanRule(RuleType):
 		path = re.findall(r"GET.*=|POST.*=",message)[0]
 		document['path'] = path.split(" ")[1]
 		
-		for pattern in self.paths:
+		name = document['_index'].split("-")[1]
+		paths = self.load_paths(name)
+		for pattern in paths:
 			if self.match_regex(pattern, message):
-				return self.paths[pattern]
+				return paths[pattern]
 		
 		# if source pattern doesn't exists return path
 		return path

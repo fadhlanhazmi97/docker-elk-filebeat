@@ -1,0 +1,50 @@
+/account: ce-arisan
+/products/advance: ce-location, ce-product
+/products/search: ce-location, ce-product
+/products/search2: ce-location, ce-product
+/products/info: NEW-CE-Product-34-centos (10.99.0.34)
+/products/full_info: ce-product
+/products/populate_update: ce-product
+/products: ce-product
+/v1/products/list: ce-product
+/categories: ce-product
+/panels: ce-product
+/arisan/getarisan: ce-arisan
+/arisan/getmembers: ce-arisan, MAPAN-ce-ordering-103 (10.99.0.103)
+/arisan/gethistory: ce-arisan
+/arisan/getwinners: ce-arisan
+/arisan/uninformedwinners: ce-arisan, GK (10.99.0.92), GK2 (10.99.0.41)
+/arisan/check_number: ce-arisan
+/arisan/agent_search: GK (10.99.0.92)
+/arisan/register/status: ce-arisan
+/arisan/group: ce-arisan
+/arisan/group/details: ce-arisan, KR-ACMS-CA-Arisan-124 (10.99.0.124), MAPAN-ce-ordering-103 (10.99.0.103)
+/arisan/manage: ce-arisan
+/arisan/detail_list: ce-arisan
+/arisan/chairman/info: ce-arisan
+/arisan/leader/info: ce-arisan
+/arisan/validate: ce-arisan
+/arisan/chairman/search: ce-arisan
+/arisan/version: ce-arisan
+/arisan/drafts: ce-arisan
+/arisan/bonus: ce-arisan
+/arisan/achievement/info: ce-arisan, MAPAN-ce-ordering-103 (10.99.0.103)
+/arisan/members/cancellation_reasons: ce-arisan
+/arisan/sequence/history: ce-arisan
+/arisan/delivery/tracking: KR-LOGISTIC-CE-151 (10.99.0.151)
+/arisan/delivery/tracking_winner: KR-LOGISTIC-CE-151 (10.99.0.151)
+/arisan/chairman/potential: ce-arisan
+/arisan/chairman/month_range_mutation: ce-arisan
+/arisan/auto-cancel/list: ce-arisan
+/arisan/chairman/point: ce-arisan, lakshmi
+/arisan/binaan/list: MAPAN-ce-arisan-102 (10.99.0.102), lakshmi
+/agent: GK (10.99.0.92)
+/members: MAPAN-emoney-63 (10.99.0.63)
+/orders: MAPAN-ce-ordering-103 (10.99.0.103)
+/inventories/mutations: NEW-KR-MAPAN-ce-inventory-115 (10.99.0.115), NEW-CE-Product-34-centos (10.99.0.34)
+/inventories: NEW-KR-MAPAN-ce-inventory-115 (10.99.0.115)
+/locations: ce-location
+/location: ce-location
+/v1/locations: ce-location
+/bill: ce-arisan, KR-BILL-CA-ARISAN-127 (10.99.0.127)
+/ist: KR-IST-app-territory-170 (10.99.0.170)

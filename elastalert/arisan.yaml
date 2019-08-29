@@ -1,4 +1,4 @@
-index: arisan-*
+index: arisan-viewlogic*
 type: modules.arisan.ArisanRule
 alert_subject: Error Detected!
 alert_text_type: exclude_fields
