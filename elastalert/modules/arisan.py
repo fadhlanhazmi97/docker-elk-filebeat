@@ -42,14 +42,17 @@ class ArisanRule(RuleType):
             
 	def add_data(self, data):
 		for document in data:
-			message = document['message']
-			print("Message: "+message)
-			error_pattern = r"HTTP[\/1-9\.\"]+\s20."
+			try:
+				message = document['message']
+				print("Message: "+message)
+				error_pattern = r"HTTP[\/1-9\.\"]+\s50."
 
-			if self.match_regex(error_pattern, message):
-				document['target'] = self.get_source(message,document)
-				document['error_code'] = re.findall(error_pattern,message)[0]
-				self.add_match(document)
+				if self.match_regex(error_pattern, message):
+					document['target'] = self.get_source(message,document)
+					document['error_code'] = re.findall(error_pattern,message)[0]
+					self.add_match(document)
+			except:
+				print("Log format unsupported, here is the log:\n\n"+str(document))
 
 	def get_match_str(self, match):
 		try:

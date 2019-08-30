@@ -12,7 +12,8 @@ RUN apk add --update --no-cache ca-certificates libmagic openssl-dev py3-yaml op
     mv e* /opt/elastalert
 
 FROM python:3.6-alpine
-RUN apk add --update --no-cache libmagic
+ENV TZ Asia/Jakarta
+RUN apk add --update --no-cache libmagic tzdata
 COPY --from=build /usr/local/lib/python3.6/site-packages /usr/local/lib/python3.6/site-packages
 COPY --from=build /opt/elastalert /opt/elastalert
 WORKDIR /opt/elastalert
