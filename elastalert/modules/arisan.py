@@ -15,7 +15,7 @@ class ArisanRule(RuleType):
 		return key, value
 
 	def load_paths(self, name):
-		f = open("modules/pattern/name","r")
+		f = open("modules/pattern/"+name,"r")
 		lines = f.readlines()
 		paths = {}
 		for line in lines:
@@ -42,17 +42,14 @@ class ArisanRule(RuleType):
             
 	def add_data(self, data):
 		for document in data:
-			try:
-				message = document['message']
-				print("Message: "+message)
-				error_pattern = r"HTTP[\/1-9\.\"]+\s20."
+			message = document['message']
+			print("Message: "+message)
+			error_pattern = r"HTTP[\/1-9\.\"]+\s20."
 
-				if self.match_regex(error_pattern, message):
-					document['target'] = self.get_source(message,document)
-					document['error_code'] = re.findall(error_pattern,message)[0]
-					self.add_match(document)
-			except:
-				print("Log format unsupported")
+			if self.match_regex(error_pattern, message):
+				document['target'] = self.get_source(message,document)
+				document['error_code'] = re.findall(error_pattern,message)[0]
+				self.add_match(document)
 
 	def get_match_str(self, match):
 		try:
