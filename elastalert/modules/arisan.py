@@ -29,7 +29,8 @@ class ArisanRule(RuleType):
 			pattern = r"GET.*HTTP|POST.*HTTP"
 			
 		path = re.findall(r"GET.*=|POST.*=",message)[0]
-		document['path'] = path.split(" ")[1]
+		path = path.split(" ")[1]
+		document['path'] = path
 		
 		name = document['_index'].split("-")[1]
 		paths = self.load_paths(name)
