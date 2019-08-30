@@ -54,7 +54,7 @@ class ArisanRule(RuleType):
 
 	def get_match_str(self, match):
 		try:
-			match_str = "The source of the error is at: "+ match['target']+"\n"
+			match_str = "The possible source of the error is at: "+ match['target']+"\n"
 			match_str += "API Path: "+ match['path']+"\n"
 			match_str += "Error detected in: "+match['host']['name']+"\n"
 			match_str += "Error HTTP code: "+match['error_code'][-3:]
