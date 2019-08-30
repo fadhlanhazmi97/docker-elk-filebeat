@@ -7,11 +7,10 @@ class ArisanRule(RuleType):
 	
 	def process_line(self, line):
 		line_split = line.split(":")
-		key = line_split[0]
+		key = line_split[0].strip()
 		key = key.replace("/",r"\/")
 		key = ".*"+key+".*"
-		value = line_split[1]
-		value = value.strip()
+		value = line_split[1].strip()
 		return key, value
 
 	def load_paths(self, name):

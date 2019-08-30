@@ -1,0 +1,40 @@
+/accounts/getbalance_android/ : ce-arisan
+/accounts/response/process/ : GK (10.99.0.92)
+/arisan/register/ : MAPAN_CELERY (10.99.0.118)
+/arisan/changearisan : GK (10.99.0.92), ce-product, ce-arisan, GK2 (10.99.0.41)
+/arisan/changestatus : GK (10.99.0.92), ce-product, ce-arisan, GK2 (10.99.0.41), MAPAN-ce-ordering-103 (10.99.0.103)
+/arisan/removemember/ : ce-arisan
+/arisan/chairman/register/ : MAPAN_CELERY (10.99.0.118),  VIEWLOGIC (10.99.0.56)
+/arisan/checkbonus : ce-arisan
+/arisan/cashin/gk : MAPAN_CELERY (10.99.0.118)
+/arisan/payment/MAPAN_CELERY (10.99.0.118)
+/arisan/payment/cyclos : ce-arisan, GK2 (10.99.0.41),  MAPAN_CELERY (10.99.0.118)
+/arisan/payment/transfer : MAPAN-viewmidware-55 (10.99.0.55), KR-ACMS-CA-Arisan-124 (10.99.0.124), MAPAN_CELERY (10.99.0.118)
+/arisan/transaction/callback : MAPAN_CELERY (10.99.0.118), ce-arisan, GK2 (10.99.0.41)
+/arisan/group/cancel : ce-arisan, KR-ACMS-CA-Arisan-124 (10.99.0.124), MAPAN_CELERY (10.99.0.118)
+/arisan/login : ce-arisan
+/arisan/checkpayment : ce-arisan, KR-ACMS-CA-Arisan-124 (10.99.0.124)
+/arisan/chairman/update : GK (10.99.0.92), ce-arisan
+/arisan/drafts : ce-arisan
+/arisan/achievement/transaction/new : MAPAN_CELERY (10.99.0.118)
+/arisan/members/cancel : GK2 (10.99.0.41)
+/arisan/ordering/shipment_date/update : MAPAN-ce-ordering-103 (10.99.0.103)
+/arisan/manualfinish : MAPAN_CELERY (10.99.0.118), ce-arisan
+/arisan/bill/v1/bills/update : KR-BILL-CA-ARISAN-127
+/rumpi/validate_token : MAPAN-ce-arisan-102
+/members/resetpin : MAPAN-emoney-63 (10.99.0.63), GK2 (10.99.0.41)
+/members/resetpinconfirmation : MAPAN-emoney-63 (10.99.0.63), GK2 (10.99.0.41)
+/members/register : GK2 (10.99.0.41)
+/members/login : ce-arisan
+/products : ce-product
+/orders/check_validity : NEW-KR-MAPAN-ce-inventory-115 (10.99.0.115)
+/orders/new : MAPAN-ce-ordering-103 (10.99.0.103), NEW-KR-MAPAN-ce-inventory-115 (10.99.0.115)
+/orders/update : MAPAN-ce-ordering-103 (10.99.0.103), ce-arisan
+/orders/upload : MAPAN-ce-ordering-103 (10.99.0.103), NEW-KR-MAPAN-ce-inventory-115 (10.99.0.115)
+/orders/items/update :  MAPAN-ce-ordering-103 (10.99.0.103)
+/orders/brutal_update :  MAPAN-ce-ordering-103 (10.99.0.103)
+/orders/sms_notif : GK2 (10.99.0.41)
+/inventories  : NEW-KR-MAPAN-ce-inventory-115 (10.99.0.115)
+/logistics : KR-LOGISTIC-CE-151 (10.99.0.151)
+/arisan_web : MAPAN_CELERY (10.99.0.118)
+/bill : KR-BILL-CA-ARISAN-127 (10.99.0.127)
