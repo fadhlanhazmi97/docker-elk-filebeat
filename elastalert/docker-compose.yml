@@ -2,9 +2,10 @@ version: '3'
 
 services:
   elastalert:
+    container_name: elastalert
     image: fadhlanhazmi/elastalert:0.2.1
     network_mode: host
     volumes:
       - "./config.yaml:/opt/elastalert/config.yaml:ro"
-      - "./arisan.yaml:/opt/elastalert/rules/arisan.yaml:ro"
+      - "./rules:/opt/elastalert/rules:ro"
       - "./modules:/opt/elastalert/modules:ro"

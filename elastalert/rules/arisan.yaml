@@ -1,5 +1,7 @@
 index: arisan-*
 type: modules.arisan.ArisanRule
+realert:
+  minutes: 0
 alert_subject: Error Detected!
 alert_text_type: exclude_fields
 alert_text: ""

@@ -9,11 +9,11 @@ filebeat.config.modules:
 
 # setup filebeat to send output to elasticsearch
 output.elasticsearch:
-  hosts: ["http://localhost:9200","http://localhost:9201","http://localhost:9202"]
-  index: "arisan-viewlogic-%{+yyyy.MM.dd}"
+  hosts: ["http://localhost:9200"]
+  index: "arisan-viewmidware-%{+yyyy.MM.dd}"
 
-setup.template.name: "arisan-viewlogic"
-setup.template.pattern: "arisan-viewlogic*"
+setup.template.name: "arisan-viewmidware"
+setup.template.pattern: "arisan-viewmidware*"
 
 logging.level: "warning"
 logging.json: true

@@ -7,9 +7,6 @@ rules_folder: rules
 run_every:
   seconds: 10
 
-realert:
-  minutes: 0
-
 # ElastAlert will buffer results from the most recent
 # period of time, in case some log sources are not in real time
 buffer_time:

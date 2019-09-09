@@ -33,7 +33,7 @@ services:
       - "./local-config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro"
     network_mode: host
 
-  elasticsearch1:
+  elasticsearch:
     hostname: elasticsearch1
     image: fadhlanhazmi/elasticsearch:1.0.0
     build:
@@ -45,46 +45,6 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - port=9200
-    volumes:
-      - "./local-config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
-    network_mode: host
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-
-  elasticsearch2:
-    hostname: elasticsearch2
-    image: fadhlanhazmi/elasticsearch:1.0.0
-    build:
-      context: elasticsearch
-      dockerfile: Dockerfile
-    environment:
-      - cluster.name=docker-logs-elk-cluster
-      - node.name=es-2
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-      - port=9201
-    volumes:
-      - "./local-config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
-    network_mode: host
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-
-  elasticsearch3:
-    hostname: elasticsearch3
-    image: fadhlanhazmi/elasticsearch:1.0.0
-    build:
-      context: elasticsearch
-      dockerfile: Dockerfile
-    environment:
-      - cluster.name=docker-logs-elk-cluster
-      - node.name=es-3
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
-      - port=9202
     volumes:
       - "./local-config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
     network_mode: host
